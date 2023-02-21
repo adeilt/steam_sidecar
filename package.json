@@ -1,13 +1,13 @@
 {
-  "name": "browser-extension-starter-template",
-  "version": "0.0.1",
+  "name": "steam-sidecar",
+  "version": "0.1",
   "description": "Chrome extension",
-  "homepage": "https://wwww.stefanvd.net",
-  "author": "Stefan Van Damme",
+  "homepage": "https://github.com/adeilt/steam_sidecar",
+  "author": "Wil Langford",
   "license": "GPL-2.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:stefanvd/browser-extension-starter-template.git"
+    "url": "git@github.com:adeilt/steam_sidecar.git"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
