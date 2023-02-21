@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "SteamSidecar",
+  "version": "0.1",
+  "description": "Search steam item pages for stuff I'm interested in.",
+  "author": "Wil Langford",
+  "homepage_url": "https://github.com/adeilt/steam_sidecar",
+  "icons": {
+    "16": "icons/16.png",
+    "24": "icons/24.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+    "128": "icons/128.png"
+  },
+  "action": {
+    "default_title": "SteamSidecar",
+    "default_icon": {
+      "19": "icons/19.png",
+      "38": "icons/38.png"
+    }
+  },
+  "host_permissions": ["https://store.steampowered.com/*"],
+  "content_security_policy": {
+    "extension_pages": "default-src 'none'; style-src 'self'; media-src 'none'; child-src 'none'; connect-src 'none'; script-src 'self'; img-src 'self'; object-src 'none'"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "MacCtrl+Shift+S"
+      }
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://store.steampowered.com/*"],
+      "css": ["css/sidecar.css"],
+      "js": ["js/run.js"]
+    }
+  ],
+  "offline_enabled": true,
+  "minimum_chrome_version": "103",
+  "permissions": ["activeTab", "storage", "scripting"]
+}
