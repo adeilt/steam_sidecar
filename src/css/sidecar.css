@@ -30,7 +30,7 @@
 }
 
 .sidecar_tag {
-    background-color: rgb(196, 196, 196);
+    background-color: #CCCCCC;
     cursor: pointer;
     color: #000000;
     border: 1px solid rgb(0, 0, 0);
@@ -43,9 +43,9 @@
 }
 
 .sidecar_tag_like {
-    background-color: rgb(0, 255, 72);
+    background-color: #00FF48;
 }
 
 .sidecar_tag_dislike {
-    background-color: rgb(147, 84, 84);
+    background-color: #FF2222;
 }

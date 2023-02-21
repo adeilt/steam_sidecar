@@ -1,7 +1,11 @@
 function addElement(id){
-	chrome.storage.sync.get(["user_tags"], function(response){
+	chrome.storage.sync.get(["user_tags", "colors", "options"], function(response){
 
 		var user_tags = response["user_tags"] ? response["user_tags"] : {};
+		var colors = response["colors"] ? response["colors"] : {};
+		var options = response["options"] ? response["options"] : {};
+
+		document['steam_sidecar_colors'] = colors;
 
 		// user_tags = {
 		// 	'Co-op': {
@@ -13,47 +17,56 @@ function addElement(id){
 		// };
 		// saveTagsToCloud(user_tags);
 
-		const sidecarDiv = document.createElement("div");
-		sidecarDiv.id = id;
+		const sidecar_div = document.createElement("div");
+		sidecar_div.id = id;
 
 		const sidecar_title = document.createElement("div");
 		sidecar_title.innerText = "SteamSidecar";
 		sidecar_title.classList.add('sidecar_title');
-		sidecarDiv.appendChild(sidecar_title);
+		sidecar_div.appendChild(sidecar_title);
 
 		const sidecar_tag_title = document.createElement("div");
 		sidecar_tag_title.innerText = "Tags";
 		sidecar_tag_title.classList.add('sidecar_tag_title');
-		sidecarDiv.appendChild(sidecar_tag_title);
+		sidecar_div.appendChild(sidecar_tag_title);
 
 		const sidecar_text = document.createElement("div");
 		sidecar_text.innerText = "ctrl to modify; left-click likes, right-click dislikes";
 		sidecar_text.classList.add('sidecar_text');
-		sidecarDiv.appendChild(sidecar_text);
+		sidecar_div.appendChild(sidecar_text);
 
 		let tags_list = document.getElementsByClassName("glance_tags popular_tags")[0].getElementsByTagName('a');
 		
 		for (const steam_tag of tags_list) {
 			let tag_name = steam_tag.innerText.trim()
-			tagSpan = document.createElement("span");
-			tagSpan.classList.add('sidecar_tag');
-			tagSpan.innerText = tag_name;
+			let tag_span = document.createElement("span");
+			tag_span.classList.add('sidecar_tag');
+			tag_span.innerText = tag_name;
+			if ("neutral_color" in colors) {
+				tag_span.style.background = colors['neutral_color'];
+			}
 			if (tag_name in user_tags) {
 				let tag_data = user_tags[tag_name];
 				if (tag_data.flag_as == "like") {
-					tagSpan.classList.add('sidecar_tag_like');
+					tag_span.classList.add('sidecar_tag_like');
+					if ("like_color" in colors) {
+						tag_span.style.background = colors['like_color'];
+					}
 				}
 				if (tag_data.flag_as == "dislike") {
-					tagSpan.classList.add('sidecar_tag_dislike');
+					tag_span.classList.add('sidecar_tag_dislike');
+					if ("dislike_color" in colors) {
+						tag_span.style.background = colors['dislike_color'];
+					}
 				}
 			}
-			tagSpan.onclick = tagClick;
-			tagSpan.oncontextmenu = tagClick;
-			sidecarDiv.appendChild(tagSpan);
+			tag_span.onclick = tagClick;
+			tag_span.oncontextmenu = tagClick;
+			sidecar_div.appendChild(tag_span);
+			sidecar_div.appendChild(document.createElement('br'));
 		}
 
-
-		document.body.appendChild(sidecarDiv);
+		document.body.appendChild(sidecar_div);
 	});
 }
 
@@ -91,18 +104,21 @@ function tagClick(event) {
 }
 
 function likeTag(clicked_tag) {
+	clicked_tag.style.background = document['steam_sidecar_colors']['like_color'];
 	clicked_tag.classList.add('sidecar_tag_like');
 	clicked_tag.classList.remove('sidecar_tag_dislike');
 	saveTagsToCloud({[clicked_tag.innerText]: {flag_as: 'like'}});
 }
 
 function dislikeTag(clicked_tag) {
+	clicked_tag.style.background = document['steam_sidecar_colors']['dislike_color'];
 	clicked_tag.classList.add('sidecar_tag_dislike');
 	clicked_tag.classList.remove('sidecar_tag_like');
 	saveTagsToCloud({[clicked_tag.innerText]: {flag_as: 'dislike'}});
 }
 
 function unsetTag(clicked_tag) {
+	clicked_tag.style.background = document['steam_sidecar_colors']['neutral_color'];
 	clicked_tag.classList.remove('sidecar_tag_like');
 	clicked_tag.classList.remove('sidecar_tag_dislike');
 	saveTagsToCloud({[clicked_tag.innerText]: {flag_as: 'REMOVE'}});

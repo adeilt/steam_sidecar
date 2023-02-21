@@ -16,13 +16,23 @@ body {
     font-size: 16px;
 }
 
-#reset_tags {
+.section {
+    border: 1px solid gray;
+    min-width: 20%;
+    width: fit-content;
+    padding: 20px;
+    display: inline-block;
+}
+
+.reset_button {
     background: red;
     color: black;
     font-weight: bold;
+    border-width:3px;
+    margin: 10px;
 }
 
-#reset_tags:disabled {
+.reset_button:disabled {
     background: rgb(254, 187, 187);
     color: gray;
 }
