@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title data-i18n="optionpagetitle"></title>
+<title data-i18n="optionpagetitle">SteamSidecar Options</title>
 <link rel="stylesheet" type="text/css" href="css/options.css">
+<link rel="stylesheet" type="text/css" href="css/sidecar.css">
 <script type="text/javascript" src="js/options.js"></script>
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#232323" media="(prefers-color-scheme: dark)">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 </head>
 <body>
-<div id="main-content" role="main">
+	<h1>SteamSidecar Options</h1>
+	<h2>Tags</h2>
+	<div id="tag_list_div"></div>
+
+	<input type="button" id="reset_tags" value="reset all tags" disabled>
 	<label>
-		<input type="checkbox" id="confirm_reset">confirm reset
+		<input type="checkbox" id="confirm_reset_tags">confirm
 	</label>
-</div>
-<script type="text/javascript" src="js/translate.js"></script>
 </body>
 </html>

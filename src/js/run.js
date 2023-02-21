@@ -1,5 +1,3 @@
-var user_tags = null;
-
 function addElement(id){
 	chrome.storage.sync.get(["user_tags"], function(response){
 
@@ -33,15 +31,15 @@ function addElement(id){
 		sidecar_text.classList.add('sidecar_text');
 		sidecarDiv.appendChild(sidecar_text);
 
-		var tags_list = document.getElementsByClassName("glance_tags popular_tags")[0].getElementsByTagName('a');
+		let tags_list = document.getElementsByClassName("glance_tags popular_tags")[0].getElementsByTagName('a');
 		
 		for (const steam_tag of tags_list) {
-			var tag_name = steam_tag.innerText.trim()
+			let tag_name = steam_tag.innerText.trim()
 			tagSpan = document.createElement("span");
 			tagSpan.classList.add('sidecar_tag');
 			tagSpan.innerText = tag_name;
 			if (tag_name in user_tags) {
-				var tag_data = user_tags[tag_name];
+				let tag_data = user_tags[tag_name];
 				if (tag_data.flag_as == "like") {
 					tagSpan.classList.add('sidecar_tag_like');
 				}
@@ -64,8 +62,7 @@ function sleep(ms) {
 }
 
 function removeElement(id){
-	var elem = document.getElementById(id);
-	return elem.parentNode.removeChild(elem);
+	return document.getElementById(id).parentNode.removeChild(elem);
 }
 
 function tagClick(event) {
@@ -132,7 +129,7 @@ async function saveTagsToCloud(new_tags) {
 
 	window.steam_sidecar_saving_lock = true;
 	chrome.storage.sync.get(["user_tags"], function(response){
-		var user_tags = response["user_tags"] ? response["user_tags"] : {};
+		let user_tags = response["user_tags"] ? response["user_tags"] : {};
 		for (const tag_name in new_tags) {
 			user_tags[tag_name] = new_tags[tag_name];
 		}

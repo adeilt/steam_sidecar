@@ -2,14 +2,35 @@
     --ext-primary-font-color: #fff;
     --ext-body-background: #111111;
 }
+
 .light {
     --ext-primary-font-color: #000;
     --ext-body-background: #fff;
 }
+
 body {
     background: var(--ext-body-background);
     color: var(--ext-primary-font-color);
     font-family: Arial, sans-serif;
     cursor: default;
     font-size: 16px;
+}
+
+#reset_tags {
+    background: red;
+    color: black;
+    font-weight: bold;
+}
+
+#reset_tags:disabled {
+    background: rgb(254, 187, 187);
+    color: gray;
+}
+
+#tag_list_div {
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid darkgray;
+    min-width: 10%;
+    width: fit-content;
 }
