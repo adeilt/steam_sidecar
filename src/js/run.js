@@ -5,10 +5,6 @@ function addElement(id){
 
 		var user_tags = response["user_tags"] ? response["user_tags"] : {};
 
-		for (const ut in user_tags) {
-			console.log(ut + ":" + user_tags[ut].flag_as);
-		}
-
 		// user_tags = {
 		// 	'Co-op': {
 		// 		flag_as: "like"
@@ -73,7 +69,6 @@ function removeElement(id){
 }
 
 function tagClick(event) {
-	console.log(event.button);
 	clicked_tag = this;
 	if (event.ctrlKey) {
 		switch(event.button) {
@@ -128,18 +123,16 @@ async function saveTagsToCloud(new_tags) {
 		if (sleep_count > 10) {
 			console.log("Couldn't save tags!  Did not save changes to tags:");
 			console.log(JSON.stringify(new_tags));
+
+			// something has clearly gone wrong; release the lock and hope for the best
+	    	delete window.steam_sidecar_saving_lock;
 			return false;
 		}
 	}
 
 	window.steam_sidecar_saving_lock = true;
-	console.log("Got lock.");
 	chrome.storage.sync.get(["user_tags"], function(response){
 		var user_tags = response["user_tags"] ? response["user_tags"] : {};
-		for (const ut in user_tags) {
-			console.log(ut + ":" + user_tags[ut].flag_as);
-		}
-		console.log("Got user_tags from store.");
 		for (const tag_name in new_tags) {
 			user_tags[tag_name] = new_tags[tag_name];
 		}
@@ -149,14 +142,8 @@ async function saveTagsToCloud(new_tags) {
 			}
 		}
 
-		console.log("user_tags updated; writing back to store.");
-		for (const ut in user_tags) {
-			console.log(ut + ":" + user_tags[ut].flag_as);
-		}
 		chrome.storage.sync.set({ "user_tags": user_tags}, function(response) {
-			console.log("user_tags written to store.");
 	    	delete window.steam_sidecar_saving_lock;
-			console.log("Released lock.");
 		});
 	});
 }

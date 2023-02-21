@@ -20,17 +20,9 @@
       "38": "icons/38.png"
     }
   },
-  "host_permissions": ["https://store.steampowered.com/*"],
+  "host_permissions": ["https://store.steampowered.com/app/*"],
   "content_security_policy": {
     "extension_pages": "default-src 'none'; style-src 'self'; media-src 'none'; child-src 'none'; connect-src 'none'; script-src 'self'; img-src 'self'; object-src 'none'"
-  },
-  "commands": {
-    "_execute_browser_action": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+S",
-        "mac": "MacCtrl+Shift+S"
-      }
-    }
   },
   "options_ui": {
     "page": "options.html",
@@ -38,7 +30,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://store.steampowered.com/*"],
+      "matches": ["https://store.steampowered.com/app/*"],
       "css": ["css/sidecar.css"],
       "js": ["js/run.js"]
     }
