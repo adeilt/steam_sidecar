@@ -1,11 +1,13 @@
 #sidecar_element {
     position: fixed;
-    width: 20%;
-    height: 50vh;
-    top: 25vh;
+    min-width: 10%;
+    width: fit-content;
+    min-height: 20vh;
+    height: fit-content;
+    top: 15vh;
     right: 0;
 
-    padding: 2px;
+    padding: 5px;
 
     background: rgb(2, 84, 2);
     color: rgb(255, 255, 255);
@@ -13,19 +15,19 @@
     z-index: 1000;
 }
 
-.sidecar_title {
+#sidecar_title {
     font-weight: bolder;
     font-size: x-large;
     text-align: center;
 }
 
-.sidecar_tag_title {
+#sidecar_tag_title {
     font-weight: bolder;
     font-size: large;
     text-align: center;
 }
 
-.sidecar_text {
+#sidecar_text {
     font-style: italic;
 }
 
@@ -40,6 +42,7 @@
     padding-right: 3px;
     line-height: 1.5;
     display: inline-block;
+    font-size: large;
 }
 
 .sidecar_tag_like {

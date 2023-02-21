@@ -22,17 +22,17 @@ function addElement(id){
 
 		const sidecar_title = document.createElement("div");
 		sidecar_title.innerText = "SteamSidecar";
-		sidecar_title.classList.add('sidecar_title');
+		sidecar_title.id = 'sidecar_title';
 		sidecar_div.appendChild(sidecar_title);
 
 		const sidecar_tag_title = document.createElement("div");
 		sidecar_tag_title.innerText = "Tags";
-		sidecar_tag_title.classList.add('sidecar_tag_title');
+		sidecar_tag_title.id = 'sidecar_tag_title';
 		sidecar_div.appendChild(sidecar_tag_title);
 
 		const sidecar_text = document.createElement("div");
 		sidecar_text.innerText = "ctrl to modify; left-click likes, right-click dislikes";
-		sidecar_text.classList.add('sidecar_text');
+		sidecar_text.id = 'sidecar_text';
 		sidecar_div.appendChild(sidecar_text);
 
 		let tags_list = document.getElementsByClassName("glance_tags popular_tags")[0].getElementsByTagName('a');
