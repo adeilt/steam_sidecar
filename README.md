@@ -1,4 +1,4 @@
-# I'm about to rename this to Miasmatic to avoid anyone thinking that Steam or Valve had anything to do with it. This is the last commit under the name "Steam Sidecar".
+# I'm about to rename this to [Miasmatic](https://github.com/adeilt/miasmatic) to avoid anyone thinking that Steam or Valve had anything to do with it. This is the last commit under the name "Steam Sidecar".
 
 A Chrome extension to highlight Steam tags I like and don't like.
 
