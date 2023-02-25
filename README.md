@@ -1,4 +1,10 @@
-An extension to highlight Steam tags I like and don't like.
+A Chrome extension to highlight Steam tags I like and don't like.
 
-Thanks to stefanvd on github for the template:
+Possible future features I'm considering:
+
+- surfacing other game attributes that are important to me and my friends (e.g. online co-op, some DRM systems, early access status, release date, etc.) so that the information is all in one easy-to-scan box
+- searching the text of the reviews that show up on the page for certain keywords
+- searching the discussions for the game for certain keywords
+
+Thanks to stefanvd on github for the Chrome Extension template:
 https://github.com/stefanvd/browser-extension-starter-template
