@@ -14,6 +14,6 @@
     "prettier": "^2.8.4"
   },
   "scripts": {
-    "dist": "zip -r dist/$npm_package_name-$npm_package_version.zip src"
+    "dist": "7z a dist/%npm_package_name%-%npm_package_version%.zip src"
   }
 }
